@@ -5,6 +5,12 @@ import (
 )
 
 func main() {
+
+    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Add("Content-Type", "text/plain")
+		w.Write([]byte("Hello, world"))
+	})
+
 	http.HandleFunc("/200", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte("200"))
